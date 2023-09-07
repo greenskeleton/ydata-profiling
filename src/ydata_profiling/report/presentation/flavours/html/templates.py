@@ -11,7 +11,8 @@ from ydata_profiling.report.formatters import fmt, fmt_badge, fmt_numeric, fmt_p
 # Initializing Jinja
 if getattr(sys, 'frozen', False):
     # Support for PyInstaller
-    bundle_dir = sys._MEIPASS
+    bundle_dir = Path(sys._MEIPASS).\
+        joinpath("ydata_profiling/report/presentation/flavours/html/templates")
     package_loader = jinja2.FileSystemLoader(bundle_dir)
 else:
     package_loader = jinja2.PackageLoader(
